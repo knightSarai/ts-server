@@ -1,13 +1,14 @@
 import express from 'express';
 import { router, requireAuth } from './routes/login';
 import cookieSession from 'cookie-session';
-
+import './controllers/login';
+import AppRouter from './AppRouter';
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieSession({ keys: ['qAsd__wer!23--0'] }));
-// app.use(requireAuth);
 app.use(router);
+app.use(AppRouter.getRouter());
 
 router.get('/dashboard', requireAuth, (req, res) => {
   res.send(`
@@ -22,7 +23,7 @@ router.get('/', (req, res) => {
   if (req.session?.loggedIn) {
     return res.send(`
             <div>
-                <h1>Welcom!</h1>
+                <h1>Welcome!</h1>
                 <a href="/dashboard">Dashboard</a>
                 <a href="/logout">logout</a>
             </div>

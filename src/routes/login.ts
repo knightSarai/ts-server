@@ -48,8 +48,6 @@ router.post('/login', (req: ServerRequest, res: Response) => {
 });
 
 router.get('/logout', (req: ServerRequest, res: Response) => {
-  console.log(req.session);
-
   if (req.session?.loggedIn) {
     req.session = undefined;
     return res.send(
