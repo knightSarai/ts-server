@@ -5,8 +5,6 @@ import { get, controller } from './decorators';
 class Login {
   @get('/login')
   getLogin(req: Request, res: Response) {
-    console.log('knight');
-
     res.send(
       `
           <div>
