@@ -16,9 +16,9 @@ function bodyValidators(keys: string[]): RequestHandler {
         res.status(422).send(`Missing property ${key}`);
         return;
       }
-
-      next();
     }
+
+    next();
   };
 }
 
